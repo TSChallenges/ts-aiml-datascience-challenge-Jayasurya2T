@@ -1,13 +1,23 @@
 {
-    "name": "Python ETL Environment",
-    "image": "mcr.microsoft.com/vscode/devcontainers/python:3.9",
+    "name": "Jupyter Environment",
+    "image": "mcr.microsoft.com/vscode/devcontainers/python:3.9", 
     "features": {},
     "extensions": [
         "ms-python.python",
+        "ms-toolsai.jupyter",
         "ms-azuretools.vscode-docker"
     ],
     "settings": {
-      "python.pythonPath": "/usr/local/bin/python"
+        "python.pythonPath": "/usr/local/bin/python",
+        "jupyter.jupyterServerType": "local",
+        "python.dataScience.notebookFileRoot": "${workspaceFolder}"
     },
-    "postCreateCommand": "pip install -r requirements.txt"
-  }
+    "postCreateCommand": "pip install -r requirements.txt",
+    "forwardPorts": [8888],
+    "portsAttributes": {
+        "8888": {
+            "label": "Jupyter",
+            "onAutoForward": "notify"
+        }
+    }
+}
