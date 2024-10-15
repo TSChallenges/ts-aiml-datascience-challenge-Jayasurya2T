@@ -9,24 +9,22 @@ def load_data(filepath):
     return df
 
 def check_missing_values(df):
-    """
-    TODO : Check for missing values in the DataFrame.
-    """
+    
+    missing = df.isnull().sum()
+
     print("Missing Values:\n", missing)
 
 def generate_summary_statistics(df):
-    """
-    TODO : Generate summary statistics for key variables.
-    """
+    summary = df.describe()
     print("Summary Statistics:\n", summary)
 
 def main():
     # Load data
     df = load_data('data/bank_churn.csv')
     
-    # TODO : Check for missing values by calling it's function
+    check_missing_values(df) #T : Check for missing values by calling it's function
     
-    # TODO : Generate summary statistics by calling it's function
+    generate_summary_statistics(df) # TOO : Generate summary statistics by calling it's function
 
 if __name__ == "__main__":
     main()
