@@ -17,20 +17,20 @@ def define_features_target(df):
     """
     Define input features and target variable.
     """
-    x = df.drop(['churn', 'customer_id'], axis=1)  # Assuming 'churn' is the target
+    x = df.drop(['churn', 'customer_id','age_group'], axis=1)  # Assuming 'churn' is the target
     y = df['churn']
     return x, y
 
 def train_model(x_train, y_train):
     """
-    TODO: Train a model using either RandomForestClassifier or XGBClassifier. Comment out the model to be used
+    TOD: Train a model using either RandomForestClassifier or XGBClassifier. Comment out the model to be used
     """
     # model = RandomForestClassifier(n_estimators=100, random_state=42)
     # model.fit(x_train, y_train)
     
-    # TODO: Train the XGBClassifier model
-    # model = XGBClassifier(use_label_encoder=False, eval_metric='logloss', enable_categorical=True)
-    # model.fit(x_train, y_train)
+    # TOD: Train the XGBClassifier model
+    model = XGBClassifier(use_label_encoder = True, eval_metric='logloss', enable_categorical=True)
+    model.fit(x_train, y_train)
     
     return model
 
@@ -40,10 +40,10 @@ def evaluate_model(model, x_test, y_test):
     Evaluate the model using Accuracy and F1 Score.
     """
     y_pred = model.predict(x_test)
-    
-    # TODO: Calculate accuracy and F1 score
-    
-    # TODO: print Accuracy and F1 Score
+    accuracy = accuracy_score(y_test, y_pred)
+    f1 = f1_score(y_test, y_pred)
+    print(f"Accuracy: {accuracy:.4f}")
+    print(f"F1 Score: {f1:.4f}")
     
     return accuracy, f1
 
@@ -54,12 +54,15 @@ def main():
     # Define features and target
     x, y = define_features_target(df)
     
-    # TODO: Split the data into training and testing sets
-    # Hint: use test_size=0.2, random_state=42
+    # Split into training and testing sets
     
-    # TODO: Train the model by calling train_model function on x_train, y_train
+    x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2, random_state=42)
     
-    # TODO: Evaluate the model by calling evaluate_model function
+    # Train model
+    model = train_model(x_train, y_train)
+    
+    # Evaluate model
+    evaluate_model(model, x_test, y_test)
 
 if __name__ == "__main__":
     main()
