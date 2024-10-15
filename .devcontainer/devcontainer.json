@@ -1,6 +1,6 @@
 {
-    "name": "Jupyter Environment",
-    "image": "mcr.microsoft.com/vscode/devcontainers/python:3.9", 
+    "name": "Jupyter DevContainer",
+    "image": "mcr.microsoft.com/vscode/devcontainers/python:3.9",
     "features": {},
     "extensions": [
         "ms-python.python",
@@ -16,8 +16,11 @@
     "forwardPorts": [8888],
     "portsAttributes": {
         "8888": {
-            "label": "Jupyter",
-            "onAutoForward": "notify"
+            "label": "Jupyter Notebook",
+            "onAutoForward": "openBrowser"
         }
-    }
+    },
+    "mounts": [
+        "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached"
+    ]
 }
