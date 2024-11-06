@@ -1,37 +1,68 @@
-# Predicting-Bank-Customer-Churn
+# AIML Data Science Challenge
+
+An implementation of AI and Machine Learning concepts using Python, developed and tested in GitHub Codespaces.
+
 ## Objective:
-You are tasked with building a predictive model to determine if a customer will leave the bank (churn). Using the Bank Customer Churn Dataset (available on Kaggle), you will load, clean, analyze, and create a machine learning model to predict customer churn.
+Your task is to build a predictive model to determine whether a customer will churn (leave the bank). Using the Bank Customer Churn Dataset from Kaggle, you will load, clean, analyze the data, and develop a machine learning model to predict customer churn.
 
-### Task Breakdown:
-### Task 1: Data Exploration
-### Points: 10
+---
 
-#### Load the Dataset
-Load the Bank Customer Churn Dataset into a Pandas DataFrame.
-Check for missing values and understand the basic structure of the data.
+## Getting Started
+1. After accepting the assignment, you will be redirected to your own copy of the repository
+2. The repo is forked, and you only need to commit the changes that you make in the Python files. 
+3. **Use GitHub Codespaces**:
+   - Click on the green **Code** button in your forked repository.
+   - Select **Codespaces** and choose "Create codespace on main" to open your development environment.
 
-#### Data Cleaning
-Handle any missing values appropriately.
-Ensure the dataset is clean, with no anomalies.
+4. The repository includes a pre-configured `devcontainer.json` file, which automatically sets up the Python environment in Codespaces.
+5. Once the Codespace is ready and the environment is set up, review the code in the Python files to understand the structure.
+6. A `requirement.txt` file is added in the repo, which pre-installs the required libraries for the challenge (do not modify; if modified, rerun `pip` to install). 
+7. `.devcontainer`, `tests`, `.gitignore` and `.github` folders are protected and they **SHOULD NOT** be altered. 
+8. Complete the missing functions, indicated by **TODO** comments within the Python files.
+9. Test your implementation by running the appropriate scripts in the `/src` folder inside GitHub Codespaces. 
+10. Once the Codespace changes are committed, your project will be automatically submitted for review. 
 
-#### Data Analysis (EDA)
-Generate summary statistics (mean, median, mode) for key variables.
+---
+
+## Steps to Follow
+1. Accept the assignment to obtain your forked repository and set up your environment using **GitHub Codespaces**.
+
+2. ### task 1: Data Exploration(8 marks)
+
+**`data_exploration.py`**: implement logic to load and analyze the dataset `bank_churn.csv`. Check for missing values, generate summary statistics.
+
+3. ### task 2: Feature engineering(12 marks)
+
+**`feature_engineering.py`**: Implement steps to handle missing values, encode categorical features, and create useful columns.
+
+4. ### task 3: Model Training(20 marks)
+
+**`model_training.py`**: define features, split the data, and train your machine learning model.
 
 
-### Task 2: Feature Engineering
-### Points: 10
-Create new features from the existing columns. For example:
-Create age groups.
-Categorize account balances.
-Encode categorical features like country, gender, and credit_card.
+5. Run the codes inside **GitHub Codespaces terminal** and executing the command `pytest` to verify your implementation..
 
-### Task 5: Model Training
-### Points: 10
-Train a machine learning classification model (such as Random Forest or XGBoost) to predict whether a customer will churn.
-Use the cleaned and feature-engineered data as input.
+6. Commit the changes using the **COMMIT** button (green) available in the codespace.
 
-### Task 6: Model Evaluation
-#### Points: 10
-Evaluate the performance of your model using metrics like accuracy or F1 score.
-Report the evaluation m
+---
 
+## Tips
+- Handle different data types (strings, integers, floats) correctly during data processing.
+- Use pandas for data manipulation and scikit-learn for building machine learning models.
+- Implement data quality checks after each processing step to ensure data integrity.
+
+---
+
+## Submission Guidelines
+After completing the challenge, commit the changes using the commit button available in the codespace. Make sure the changes have been successfully committed.
+
+---
+
+## Evaluation Criteria
+- Correctness of data loading and cleaning steps.
+- Quality of data exploration and feature engineering.
+- Successful model training and evaluation.
+- Proper repository structure and code organization.
+- Successful execution of the project within **GitHub Codespaces**.
+
+Good luck, and happy coding!
