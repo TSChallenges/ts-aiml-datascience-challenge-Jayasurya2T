@@ -1,6 +1,6 @@
 name: Autograding Tests
 'on':
-- push
+- workflow_dispatch
 - repository_dispatch
 permissions:
   checks: write
@@ -13,16 +13,19 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
-    - name: Run-test
-      id: run-test
-      uses: classroom-resources/autograding-python-grader@v1
+    - name: test
+      id: test
+      uses: classroom-resources/autograding-command-grader@v1
       with:
+        test-name: test
+        setup-command: pip install -r requirements.txt && jupyter nbconvert --to script
+          "src/data_exploration.ipynb" "src/feature_engineering.ipynb" "src/model_training.ipynb"
+        command: pytest
         timeout: 10
         max-score: 40
-        setup-command: pip install -r requirements.txt
     - name: Autograding Reporter
       uses: classroom-resources/autograding-grading-reporter@v1
       env:
-        RUN-TEST_RESULTS: "${{steps.run-test.outputs.result}}"
+        TEST_RESULTS: "${{steps.test.outputs.result}}"
       with:
-        runners: run-test
+        runners: test
